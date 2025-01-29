@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('theme/medico-master/css/style.css') }}">
     @livewireStyles
 </head>
+
 <body>
     <!--::header part start::-->
     <header class="main_menu home_menu">
@@ -33,7 +35,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"><img src="{{ asset('theme/medico-master/img/logo.png') }}" alt="logo"></a>
+                        <a class="navbar-brand" href="index.html">
+                            {{-- <img src="{{ asset('theme/medico-master/img/logo.png') }}" alt="logo"> --}}
+                            <h3>My Health Solution</h3>
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -97,13 +102,10 @@
                     <div class="banner_text">
                         <div class="banner_text_iner">
                             <h5>{{ __('We are here for your care') }}</h5>
-                            <h1>Best Care &
-                                Better Doctor</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
+                            <h1>{{ __('Best Care & Better Doctor') }}</h1>
+                            <p>{{ __('We are dedicated to providing exceptional healthcare with compassion and expertise. Experience the best care from highly skilled doctors committed to your well-being.') }}
+                            </p>
                             <a href="#" class="btn_2">{{ __('Make an appointment') }}</a>
-
                         </div>
                     </div>
                 </div>
@@ -129,10 +131,8 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="about_us_text">
                         <h2>{{ __('About us') }}</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                            Quis ipsum suspendisse ultrices gravida. Risus cmodo viverra
-                            maecenas accumsan lacus vel</p>
+                        <p>{{ __('we are committed to delivering high-quality healthcare with compassion and expertise. Our team of experienced doctors and medical professionals prioritize your well-being, offering personalized treatment plans to ensure the best possible care. Whether for routine check-ups or specialized treatments, we strive to create a comfortable and supportive environment for every patient. Your health is our priority, and we are here to guide you on your journey to wellness.') }}
+                        </p>
                         <a class="btn_2 " href="#">{{ __('learn more') }}</a>
                         <div class="banner_item">
                             <div class="single_item">
@@ -169,7 +169,8 @@
                 <div class="col-lg-3 col-sm-12">
                     <div class="single_feature">
                         <div class="single_feature_part">
-                            <span class="single_feature_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_1.svg') }}"
+                            <span class="single_feature_icon"><img
+                                    src="{{ asset('theme/medico-master/img/icon/feature_1.svg') }}"
                                     alt=""></span>
                             <h4>{{ __('Better Future') }}</h4>
                             <p>Darkness multiply rule Which from without life creature blessed
@@ -178,7 +179,8 @@
                     </div>
                     <div class="single_feature">
                         <div class="single_feature_part">
-                            <span class="single_feature_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                            <span class="single_feature_icon"><img
+                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                     alt=""></span>
                             <h4>{{ __('Better Future') }}</h4>
                             <p>Darkness multiply rule Which from without life creature blessed
@@ -194,7 +196,8 @@
                 <div class="col-lg-3 col-sm-12">
                     <div class="single_feature">
                         <div class="single_feature_part">
-                            <span class="single_feature_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_1.svg') }}"
+                            <span class="single_feature_icon"><img
+                                    src="{{ asset('theme/medico-master/img/icon/feature_1.svg') }}"
                                     alt=""></span>
                             <h4>{{ __('Better Future') }}</h4>
                             <p>Darkness multiply rule Which from without life creature blessed
@@ -203,7 +206,8 @@
                     </div>
                     <div class="single_feature">
                         <div class="single_feature_part">
-                            <span class="single_feature_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                            <span class="single_feature_icon"><img
+                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                     alt=""></span>
                             <h4>{{ __('Better Future') }}</h4>
                             <p>Darkness multiply rule Which from without life creature blessed
@@ -228,7 +232,8 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                                            <span class="our_depertment_icon"><img
+                                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                                     alt=""></span>
                                             <h4>{{ __('Better Future') }}</h4>
                                             <p>Darkness multiply rule Which from without life creature blessed
@@ -237,7 +242,8 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                                            <span class="our_depertment_icon"><img
+                                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                                     alt=""></span>
                                             <h4>{{ __('Better Future') }}</h4>
                                             <p>Darkness multiply rule Which from without life creature blessed
@@ -246,7 +252,8 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                                            <span class="our_depertment_icon"><img
+                                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                                     alt=""></span>
                                             <h4>{{ __('Better Future') }}</h4>
                                             <p>Darkness multiply rule Which from without life creature blessed
@@ -255,7 +262,8 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="single_our_depertment">
-                                            <span class="our_depertment_icon"><img src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
+                                            <span class="our_depertment_icon"><img
+                                                    src="{{ asset('theme/medico-master/img/icon/feature_2.svg') }}"
                                                     alt=""></span>
                                             <h4>{{ __('Better Future') }}</h4>
                                             <p>Darkness multiply rule Which from without life creature blessed
@@ -280,7 +288,8 @@
                 <div class="col-xl-8">
                     <div class="section_tittle text-center">
                         <h2>{{ __(' Experienced Doctors') }}</h2>
-                        <p>{{ __('Face replenish sea good winged bearing years air divide wasHave night male also') }}</p>
+                        <p>{{ __('Face replenish sea good winged bearing years air divide wasHave night male also') }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -489,8 +498,10 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-2 col-md-4 col-sm-6 single-footer-widget">
-                        <a href="#" class="footer_logo"><img src="{{ asset('theme/medico-master/img/logo.png') }}" alt="#"></a>
-                        <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ') }}</p>
+                        <a href="#" class="footer_logo"><img
+                                src="{{ asset('theme/medico-master/img/logo.png') }}" alt="#"></a>
+                        <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ') }}
+                        </p>
                         <div class="social_logo">
                             <a href="#"><i class="ti-facebook"></i></a>
                             <a href="#"><i class="ti-twitter"></i></a>
@@ -598,4 +609,5 @@
     <!-- custom js -->
     <script src="{{ asset('theme/medico-master/js/custom.js') }}"></script>
 </body>
+
 </html>
