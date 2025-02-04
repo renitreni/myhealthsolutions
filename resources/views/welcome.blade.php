@@ -86,7 +86,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <a class="btn_2 d-none d-lg-block" href="{{ route('filament.portal.auth.login') }}">{{ __('LOGIN') }}</a>
+                        <a class="btn_2 d-none d-lg-block"
+                            href="{{ route('filament.portal.auth.login') }}">{{ __('LOGIN') }}</a>
                     </nav>
                 </div>
             </div>
@@ -391,43 +392,7 @@
                     <div class="regervation_part_iner">
                         <form>
                             <h2>{{ __('Make an Appointment') }}</h2>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="password" class="form-control" id="inputPassword4"
-                                        placeholder="Email address">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <select class="form-control" id="Select">
-                                        <option value="1" selected>{{ __('Select service') }}</option>
-                                        <option value="2">{{ __('Name of service') }}</option>
-                                        <option value="3">{{ __('Name of service') }}</option>
-                                        <option value="4">{{ __('Name of service') }}</option>
-                                        <option value="5">{{ __('Name of service') }}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group time_icon col-md-6">
-                                    <select class="form-control" id="Select2">
-                                        <option value="" selected>{{ __('Time') }}</option>
-                                        <option value="1">{{ __('8 AM TO 10AM') }}</option>
-                                        <option value="1">{{ __('10 AM TO 12PM') }}</option>
-                                        <option value="1">{{ __('12PM TO 2PM') }}</option>
-                                        <option value="1">{{ __('2PM TO 4PM') }}</option>
-                                        <option value="1">{{ __('4PM TO 6PM') }}</option>
-                                        <option value="1">{{ __('6PM TO 8PM') }}</option>
-                                        <option value="1">{{ __('4PM TO 10PM') }}</option>
-                                        <option value="1">{{ __('10PM TO 12PM') }}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <textarea class="form-control" id="Textarea" rows="4" placeholder="Your Note "></textarea>
-                                </div>
-                            </div>
-                            <div class="regerv_btn">
-                                <a href="#" class="btn_2">{{ __('Make an Appointment') }}</a>
-                            </div>
+                            <livewire:make-appointment-livewire lazy></livewire:make-appointment-livewire>
                         </form>
                     </div>
                 </div>
