@@ -5,7 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
 // CREATE TABLE patients (
 //     id BIGINT UNSIGNED PRIMARY KEY, -- Foreign key from users.id
 //     date_of_birth DATE,

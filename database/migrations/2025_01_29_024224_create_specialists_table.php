@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Schema;
 //     license_number VARCHAR(50) NOT NULL UNIQUE,
 //     experience_years INT UNSIGNED,
 //     clinic_address TEXT,
-//     availability JSON, -- Example: {"mon": ["09:00-12:00"], "tue": ["10:00-14:00"]}
 //     FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
 // );
 return new class extends Migration
@@ -28,7 +27,6 @@ return new class extends Migration
             $table->string('license_number');
             $table->integer('experience_years');
             $table->text('clinic_address');
-            $table->json('availability');
             $table->timestamps();
         });
     }

@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
 class LocaleChangerComponent extends Component

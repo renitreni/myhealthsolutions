@@ -17,7 +17,7 @@ class LocaleMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         App::setLocale($request->lang ?? 'en');
-        
+
         return $next($request);
     }
 }

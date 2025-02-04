@@ -86,7 +86,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a class="btn_2 d-none d-lg-block" href="#">{{ __('LOGIN') }}</a>
+                        <a class="btn_2 d-none d-lg-block" href="{{ route('filament.portal.auth.login') }}">{{ __('LOGIN') }}</a>
                     </nav>
                 </div>
             </div>

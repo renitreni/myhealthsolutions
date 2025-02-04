@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Patient;
+use App\Models\Specialist;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,21 +18,36 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'role' => 'admin'
+            'role' => 'admin',
         ]);
 
-        User::factory()->create([
-            'name' => 'Test Specialist',
-            'email' => 'specialist@example.com',
-            'role' => 'specialist'
-        ]);
+        if (app()->environment('local')) {
 
-        User::factory()->create([
-            'name' => 'Test Patient',
-            'email' => 'patient@example.com',
-            'role' => 'patient'
-        ]);
-        
-        User::factory(10)->create();
+            User::factory()->has(Specialist::factory()->count(1))->create([
+                'name' => 'Test Specialist',
+                'email' => 'specialist@example.com',
+                'role' => 'specialist',
+            ]);
+
+            User::factory()->has(Patient::factory()->count(1))->create([
+                'name' => 'Test Patient',
+                'email' => 'patient@example.com',
+                'role' => 'patient',
+            ]);
+
+            $users = User::factory(50)->create();
+            foreach ($users as $user) {
+                if ($user->role == 'patient') {
+                    Patient::factory()->state([
+                        'user_id' => $user->id,
+                    ])->create();
+                }
+                if ($user->role == 'specialist') {
+                    Specialist::factory()->state([
+                        'user_id' => $user->id,
+                    ])->create();
+                }
+            }
+        }
     }
 }
