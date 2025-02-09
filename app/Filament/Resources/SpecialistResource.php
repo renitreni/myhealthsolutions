@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\InquiryResource\Pages;
-use App\Filament\Resources\InquiryResource\RelationManagers;
-use App\Models\Inquiry;
-use Faker\Provider\ar_EG\Text;
+use App\Filament\Resources\SpecialistResource\Pages;
+use App\Filament\Resources\SpecialistResource\RelationManagers;
+use App\Models\Specialist;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -15,17 +15,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class InquiryResource extends Resource
+class SpecialistResource extends Resource
 {
-    protected static ?string $model = Inquiry::class;
+    protected static ?string $model = Specialist::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('speciality'),
+                TextInput::make('license_number'),
+                TextInput::make('experience_years'),
+                TextInput::make('clinic_address'),
             ]);
     }
 
@@ -33,28 +36,22 @@ class InquiryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('email'),
-                TextColumn::make('service'),
-                TextColumn::make('note'),
+                TextColumn::make('speciality'),
+                TextColumn::make('license_number'),
+                TextColumn::make('experience_years'),
+                TextColumn::make('clinic_address'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-    
-    public static function canCreate(): bool
-    {
-        return false;
     }
 
     public static function getRelations(): array
@@ -67,9 +64,9 @@ class InquiryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListInquiries::route('/'),
-            // 'create' => Pages\CreateInquiry::route('/create'),
-            // 'edit' => Pages\EditInquiry::route('/{record}/edit'),
+            'index' => Pages\ListSpecialists::route('/'),
+            'create' => Pages\CreateSpecialist::route('/create'),
+            'edit' => Pages\EditSpecialist::route('/{record}/edit'),
         ];
     }
 }

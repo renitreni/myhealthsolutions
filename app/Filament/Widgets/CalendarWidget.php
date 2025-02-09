@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Appointment;
 use App\Models\Patient;
+use App\Models\Specialist;
 use Carbon\Carbon;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -12,6 +13,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Form;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
@@ -23,23 +25,34 @@ class CalendarWidget extends FullCalendarWidget
     protected function modalActions(): array
     {
         $patientList = Patient::with('user:id,name')->get()->pluck('user.name', 'id')->toArray();
-
+        $specialistList = Specialist::with('user:id,name')->get()->pluck('user.name', 'id')->toArray();
+ 
         return [
             CreateAction::make()
                 ->form([
                     Grid::make()
                         ->schema([
-                            Select::make('patient_id')
+                            Select::make('patient_id')->label('Patient')
                                 ->options($patientList)
                                 ->searchable()
                                 ->required(),
-                            Select::make('appointment_type')->options(['consultation', 'follow-up']),
+                            Select::make('specialist_id')->label('Specialist')
+                                ->options($specialistList)
+                                ->searchable()
+                                ->required(),
+                            Select::make('appointment_type')->options(['consultation', 'follow-up'])->required(),
                             DateTimePicker::make('appointment_date')->required(),
-                            Textarea::make('notes')->required(),
+                            Textarea::make('notes')->required()->columnSpanFull(),
                         ]),
-                ])->action(function (array $data) {
+                ])
+                ->mountUsing(function(Form $form, array $arguments){
+                    $form->fill([
+                        'appointment_date' => $arguments['start']
+                    ]);
+                })
+                ->action(function (array $data) {
                     Appointment::create([
-                        'specialist_id' => Auth::user()->specialist->id,
+                        'specialist_id' => $data['specialist_id'] ?? Auth::user()->specialist->id,
                         'patient_id' => $data['patient_id'],
                         'appointment_date' => $data['appointment_date'],
                         'appointment_type' => $data['appointment_type'],
