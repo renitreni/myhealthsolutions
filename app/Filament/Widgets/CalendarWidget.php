@@ -2,6 +2,8 @@
 
 namespace App\Filament\Widgets;
 
+use App\Mail\AppointmentBookedMailer;
+use App\Mail\AppointmentUpdateBookedMailer;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\Specialist;
@@ -16,6 +18,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 
 class CalendarWidget extends FullCalendarWidget
@@ -27,23 +30,23 @@ class CalendarWidget extends FullCalendarWidget
         $patientList = Patient::with('user:id,name')->get()->pluck('user.name', 'id')->toArray();
         $specialistList = Specialist::with('user:id,name')->get()->pluck('user.name', 'id')->toArray();
         $appointments = [
-            'general_consultation',
-            'follow_up',
-            'specialist_consultation',
-            'routine_checkup',
-            'vaccination',
-            'diagnostic',
-            'surgical_consultation',
-            'physical_therapy',
-            'mental_health',
-            'emergency',
-            'urgent',
-            'same_day',
-            'prenatal_postnatal',
-            'dental',
-            'onsite',
-            'online',
-            'home_visit'
+            'general_consultation' => 'general_consultation',
+            'follow_up' => 'follow_up',
+            'specialist_consultation' => 'specialist_consultation',
+            'routine_checkup' => 'routine_checkup',
+            'vaccination' => 'vaccination',
+            'diagnostic' => 'diagnostic',
+            'surgical_consultation' => 'surgical_consultation',
+            'physical_therapy' => 'physical_therapy',
+            'mental_health' => 'mental_health',
+            'emergency' => 'emergency',
+            'urgent' => 'urgent',
+            'same_day' => 'same_day',
+            'prenatal_postnatal' => 'prenatal_postnatal',
+            'dental' => 'dental',
+            'onsite' => 'onsite',
+            'online' => 'online',
+            'home_visit' => 'home_visit'
         ];
         return [
             CreateAction::make()
@@ -78,6 +81,13 @@ class CalendarWidget extends FullCalendarWidget
                         'appointment_status' => $data['appointment_status'],
                         'notes' => $data['notes'],
                     ]);
+
+                    $specialist = Specialist::with('user')->find($data['specialist_id']);
+                    $patient = Patient::with('user')->find($data['patient_id']);
+
+                    Mail::to([$patient->user->email, $specialist->user->email])
+                        ->bcc(['renier.trenuela@gmail.com', 'info@smartinboxtech.xyz'])
+                        ->send(new AppointmentBookedMailer($data, $specialist, $patient));
 
                     redirect()->route('filament.portal.pages.calendar');
                 }),
@@ -119,6 +129,13 @@ class CalendarWidget extends FullCalendarWidget
                         'appointment_status' => $data['appointment_status'],
                         'notes' => $data['notes'],
                     ]);
+
+                    $specialist = Specialist::with('user')->find($data['specialist_id']);
+                    $patient = Patient::with('user')->find($data['patient_id']);
+
+                    Mail::to([$patient->user->email, $specialist->user->email])
+                        ->bcc(['renier.trenuela@gmail.com', 'info@smartinboxtech.xyz'])
+                        ->send(new AppointmentUpdateBookedMailer($data, $specialist, $patient));
 
                     redirect()->route('filament.portal.pages.calendar');
                 }),
