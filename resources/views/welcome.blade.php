@@ -112,12 +112,21 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="banner_img">
-                        <img src="{{ asset('theme/medico-master/img/banner_img.png') }}" alt="">
+                        <video id="myVideo" width="800" autoplay muted>
+                            <source src="{{ asset('vecteezy.mp4') }}" type="video/mp4" />
+                        </video>
+                        {{--  <img src="{{ asset('theme/medico-master/img/banner_img.png') }}" alt=""> --}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var video = document.getElementById("myVideo");
+            video.play().catch(error => console.log("Autoplay blocked:", error));
+        });
+    </script>
     <!-- banner part start-->
 
     <!-- about us part start-->
