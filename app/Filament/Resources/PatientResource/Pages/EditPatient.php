@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Filament\Resources\SpecialistResource\Pages;
+namespace App\Filament\Resources\PatientResource\Pages;
 
-use App\Filament\Resources\SpecialistResource;
-use App\Models\Specialist;
+use App\Filament\Resources\PatientResource;
+use App\Models\Patient;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\EditRecord;
 
-class EditSpecialist extends EditRecord
+class EditPatient extends EditRecord
 {
-    protected static string $resource = SpecialistResource::class;
+    protected static string $resource = PatientResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -27,7 +27,7 @@ class EditSpecialist extends EditRecord
                             TextInput::make('password_confirmation')->password()->required()->same('password')->columnSpan(6),
                         ]),
                 ])
-                ->action(function (array $data, Specialist $patient) {
+                ->action(function (array $data, Patient $patient) {
                     $user = $patient->user;
                     $user->password = $data['password'];
                     $user->save();

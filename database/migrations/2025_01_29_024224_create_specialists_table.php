@@ -22,7 +22,7 @@ return new class extends Migration
     {
         Schema::create('specialists', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->nullable();
             $table->string('speciality');
             $table->string('license_number');
             $table->integer('experience_years');

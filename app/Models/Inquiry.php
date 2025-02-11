@@ -16,6 +16,6 @@ class Inquiry extends Model
         'service',
         'time',
         'note',
-        'ip'
+        'ip',
     ];
 }

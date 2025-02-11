@@ -3,23 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InquiryResource\Pages;
-use App\Filament\Resources\InquiryResource\RelationManagers;
 use App\Models\Inquiry;
-use Faker\Provider\ar_EG\Text;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class InquiryResource extends Resource
 {
     protected static ?string $model = Inquiry::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
 
     public static function form(Form $form): Form
     {
@@ -33,7 +28,8 @@ class InquiryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('id')->sortable()->searchable(),
+                TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email'),
                 TextColumn::make('service'),
                 TextColumn::make('note'),
@@ -51,7 +47,7 @@ class InquiryResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function canCreate(): bool
     {
         return false;

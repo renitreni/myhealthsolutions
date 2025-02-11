@@ -21,7 +21,7 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->nullable();
             $table->date('date_of_birth');
             $table->string('gender');
             $table->text('address');

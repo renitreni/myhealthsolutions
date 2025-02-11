@@ -9,7 +9,11 @@ class Patient extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $fillable = [
+        'date_of_birth',
+        'gender',
+        'address',
+    ];
 
     public function user()
     {

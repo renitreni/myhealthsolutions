@@ -43,7 +43,7 @@ class MakeAppointmentLivewire extends Component
     public function render()
     {
         $this->inquiryCount = Inquiry::where('ip', Request::ip())->count();
-    
+
         return view('livewire.make-appointment-livewire');
     }
 
@@ -55,7 +55,7 @@ class MakeAppointmentLivewire extends Component
             'service' => $this->service,
             'time' => $this->time,
             'note' => $this->note,
-            'ip' => Request::ip()
+            'ip' => Request::ip(),
         ];
 
         Inquiry::create($inquiry);
