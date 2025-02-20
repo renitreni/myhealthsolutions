@@ -26,6 +26,12 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('theme/medico-master/css/style.css') }}">
     @livewireStyles
+    <style>
+        select {
+            color: black;
+            /* Text color of selected option */
+        }
+    </style>
 </head>
 
 <body>
