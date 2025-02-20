@@ -31,6 +31,13 @@
             color: black;
             /* Text color of selected option */
         }
+
+        select option {
+            color: black;
+            /* Text color of dropdown options */
+            background-color: white;
+            /* Background color of dropdown */
+        }
     </style>
 </head>
 
